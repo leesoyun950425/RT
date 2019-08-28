@@ -16,7 +16,15 @@ public class MemberDTO {
 	private String addr3;
 	private String addr4;
 	private String travel_theme;
+	private String thumb;
 	private int cnt;
+	
+	public String getThumb() {
+		return thumb;
+	}
+	public void setThumb(String thumb) {
+		this.thumb = thumb;
+	}
 	
 	public String getTravel_theme() {
 		return travel_theme;

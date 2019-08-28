@@ -35,19 +35,19 @@ public class MemberController {
 	@RequestMapping("sign")
 	public void sign() {}
 	@RequestMapping("insert")
-	public String insert(MemberDTO memberDTO, HttpServletResponse response,Model model) throws IOException {
+	public String insert(MemberDTO memberDTO, HttpServletResponse response, Model model) throws IOException {
 		memberDTO.setAuthKey('0');
 		memberDTO.setTotaddr();
-		memberDTO.setName(memberDTO.getName());
+		memberDTO.setThumb("thumb.jpg");
 		memberDAO.insert(memberDTO);
 		// 인증메일보내기
 		JinsMail mail = new JinsMail();
 		mail.setId("leesoyun702");
 		mail.setPw("verycuteso0425");
 		mail.setSndUsr("이소윤", "leesoyun702@gmail");
-		String id = "\"http://localhost:9002/last/authkey?id=" + memberDTO.getId() + "\"";
+		String id = "\"http://localhost:8899/travle/authkey?id=" + memberDTO.getId() + "\"";
 		mail.SendMail(memberDTO.getEmail(), "가입완료 메일입니다.", "<a href=" + id + ">회원가입 인증하기</a>");
-		
+
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script type='text/javascript'>");
@@ -72,24 +72,28 @@ public class MemberController {
 		memberDAO.delete(memberDTO);
 	}
 
-	@RequestMapping("selectAll")
-	public void selectAll(Model model) {
-		List<MemberDTO> list = memberDAO.selectAll();
-		model.addAttribute("list", list);
-	}
-
 	// 인증키 인증된 처리
 	@RequestMapping("authkey")
-	public void authkey(String id) {
-		if ('0' == (memberDAO.select(id).getAuthkey()))
+	public String authkey(String id, Model model, HttpServletResponse response) throws IOException {
+		if ('0' == (memberDAO.select(id).getAuthkey())) {
 			memberDAO.update(id);
-		else
-			System.out.println("나중에 이미 인증됐을 경우 홈으로 돌려보내는 처리 할 장소");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('인증완료!! 로그인페이지로 이동합니다.')");
+			out.println("</script>");
+			out.flush();
+			model.addAttribute("loginPage", tool.login());
+			return "loginPage";
+		} else {
+			return "";
+		}
 	}
 
 	// 로그인하기
 	@RequestMapping("login")
-	public String login(String id, String pw, HttpServletResponse response, Model model, HttpSession session) throws IOException {
+	public String login(String id, String pw, HttpServletResponse response, Model model, HttpSession session)
+			throws IOException {
 		MemberDTO dto = memberDAO.select(id);
 		int dto2 = memberDAO.selectCnt3(id);
 		if (dto2 == 0) {
@@ -120,8 +124,8 @@ public class MemberController {
 					out.println("alert('로그인 성공!!')");
 					out.println("</script>");
 					out.flush();
-					session.setAttribute("id",dto.getId());
-					session.setAttribute("name",dto.getName()+"_"+dto.getId());
+					session.setAttribute("id", dto.getId());
+					session.setAttribute("name", dto.getName() + "_" + dto.getId());
 					return "success";
 				}
 			} else {
@@ -191,7 +195,7 @@ public class MemberController {
 			return "searchPw";
 		} else {
 			JinsMail mail = new JinsMail();
-			String pw = "\"http://localhost:9002/last/updatePw?id=" + dto.getId() + "\"";
+			String pw = "\"http://localhost:8899/travle/updatePw?id=" + dto.getId() + "\"";
 			mail.setId("leesoyun702");
 			mail.setPw("verycuteso0425");
 			mail.setSndUsr("이소윤", "leesoyun702@gmail");
@@ -215,11 +219,17 @@ public class MemberController {
 		MemberDTO dto = memberDAO.select(id);
 		model.addAttribute("id", dto.getId());
 	}
-
 	@RequestMapping("updatePw2")
 	public String updatePw2(MemberDTO memberDTO, Model model) {
 		memberDAO.updatePw(memberDTO);
 		model.addAttribute("loginPage", tool.login());
 		return "loginPage";
+	}
+	
+	//마이페이지로 이동하기
+	@RequestMapping("my")
+	public void my(Model model) {
+		List<MemberDTO> list = memberDAO.selectAll();
+		model.addAttribute("list", list);
 	}
 }

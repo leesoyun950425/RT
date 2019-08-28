@@ -56,6 +56,7 @@
 		<result property="roadaddr" column="roadaddr" />
 		<result property="totaddr" column="totaddr" />
 		<result property="travel_theme" column="travel_theme" />
+		<result property="thumb" column="thumb" />
 	</resultMap>
 
 	<select id="selectAll" resultMap="rsMap">
@@ -64,7 +65,7 @@
 
 	<insert id="insert" parameterType="memberDTO">
 		INSERT INTO member
-		VALUES(#{id},#{pw},#{name},#{tel},#{email},#{birth},#{authkey},#{roadaddr},#{totaddr},#{travel_theme})
+		VALUES(#{id},#{pw},#{name},#{tel},#{email},#{birth},#{authkey},#{roadaddr},#{totaddr},#{travel_theme},#{thumb})
 	</insert>
 	
 	<update id="update" parameterType="memberDTO">
