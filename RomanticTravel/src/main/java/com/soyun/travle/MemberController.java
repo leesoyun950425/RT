@@ -45,7 +45,7 @@ public class MemberController {
 		mail.setId("leesoyun702");
 		mail.setPw("verycuteso0425");
 		mail.setSndUsr("이소윤", "leesoyun702@gmail");
-		String id = "\"http://localhost:8899/travle/authkey?id=" + memberDTO.getId() + "\"";
+		String id = "\"http://localhost:9002/travle/authkey?id=" + memberDTO.getId() + "\"";
 		mail.SendMail(memberDTO.getEmail(), "가입완료 메일입니다.", "<a href=" + id + ">회원가입 인증하기</a>");
 
 		response.setContentType("text/html; charset=UTF-8");
@@ -195,7 +195,7 @@ public class MemberController {
 			return "searchPw";
 		} else {
 			JinsMail mail = new JinsMail();
-			String pw = "\"http://localhost:8899/travle/updatePw?id=" + dto.getId() + "\"";
+			String pw = "\"http://localhost:9002/travle/updatePw?id=" + dto.getId() + "\"";
 			mail.setId("leesoyun702");
 			mail.setPw("verycuteso0425");
 			mail.setSndUsr("이소윤", "leesoyun702@gmail");
@@ -228,8 +228,9 @@ public class MemberController {
 	
 	//마이페이지로 이동하기
 	@RequestMapping("my")
-	public void my(Model model) {
-		List<MemberDTO> list = memberDAO.selectAll();
-		model.addAttribute("list", list);
+	public void my(MemberDTO memberDTO,HttpSession session,Model model) {
+		String id = (String)session.getAttribute("id");
+		MemberDTO dto = memberDAO.select(id);
+		model.addAttribute("dto",dto);
 	}
 }
