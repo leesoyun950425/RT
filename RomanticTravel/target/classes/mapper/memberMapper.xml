@@ -83,6 +83,20 @@
 		WHERE
 		id = #{id}
 	</update>
+	
+	<update id="updateAll" parameterType="memberDTO">
+      UPDATE member
+      SET
+      name= #{name},
+      tel= #{tel},
+      email= #{email},
+      birth= #{birth},
+      roadaddr = #{roadaddr},
+      totaddr= #{totaddr},
+      travel_theme= #{travel_theme}
+      WHERE
+      id = #{id}
+   </update>
 
 	<delete id="delete" parameterType="memberDTO">
 		DELETE FROM member WHERE

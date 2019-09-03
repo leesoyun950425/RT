@@ -100,12 +100,12 @@ function sample4_execDaumPostcode() {
 		<td>
 		관심분야 :
 			<fieldset>
-                  <input type="checkbox" name="travel_theme" value="역사"> <label style="display: inline-block;">역사</label> 
-                  <input type="checkbox" name="travel_theme" value="체험"> <label style="display: inline-block;">체험</label> 
-                  <input type="checkbox" name="travel_theme" value="자연"> <label style="display: inline-block;">자연</label>
-                  <input type="checkbox" name="travel_theme" value="휴양"> <label style="display: inline-block;">휴양</label> 
-                  <input type="checkbox" name="travel_theme" value="산업"> <label style="display: inline-block;">산업</label> 
-                  <input type="checkbox" name="travel_theme" value="조형물"> <label style="display: inline-block;">조형물</label>
+                  <input type="radio" name="travel_theme" value="역사"> <label style="display: inline-block;">역사</label> 
+                  <input type="radio" name="travel_theme" value="체험"> <label style="display: inline-block;">체험</label> 
+                  <input type="radio" name="travel_theme" value="자연"> <label style="display: inline-block;">자연</label>
+                  <input type="radio" name="travel_theme" value="휴양"> <label style="display: inline-block;">휴양</label> 
+                  <input type="radio" name="travel_theme" value="산업"> <label style="display: inline-block;">산업</label> 
+                  <input type="radio" name="travel_theme" value="조형물"> <label style="display: inline-block;">조형물</label>
                </fieldset>
 		</td>
 	</tr>

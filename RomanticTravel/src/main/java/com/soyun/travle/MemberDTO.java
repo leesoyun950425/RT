@@ -48,7 +48,19 @@ public class MemberDTO {
 	}
 	public void setAddr4(String addr4) {
 		this.addr4 = addr4;
-		
+	}
+	public String getAddr1() {
+		setAddr1(addr1);
+		return addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public String getAddr3() {
+		return addr3;
+	}
+	public String getAddr4() {
+		return addr4;
 	}
 	public String getRoadaddr() {
 		return roadaddr;
@@ -60,7 +72,10 @@ public class MemberDTO {
 		return totaddr;
 	}
 	public void setTotaddr() {
-		this.totaddr = addr1+addr2+addr3+addr4;
+		this.totaddr = addr1+"."+addr2+"."+addr3+"."+addr4;
+	}
+	public void setTotaddr(String totaddr) {
+		this.totaddr = totaddr;
 	}
 	public void setAuthkey(char authkey) {
 		this.authkey = authkey;

@@ -43,7 +43,9 @@ public class MemberDAO {
 	public void updatePw(MemberDTO memberDTO) {
 		mymy.update("memberDAO.updatePw",memberDTO);
 	}
-	
+	public void updateAll(MemberDTO memberDTO) {
+	      mymy.update("memberDAO.updateAll",memberDTO);
+	   }
 	public void delete(MemberDTO memberDTO) {
 		mymy.delete("memberDAO.delete",memberDTO);
 	}

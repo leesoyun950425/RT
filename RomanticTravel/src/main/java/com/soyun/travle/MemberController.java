@@ -33,7 +33,9 @@ public class MemberController {
 
 	// 회원가입
 	@RequestMapping("sign")
-	public void sign() {}
+	public void sign() {
+	}
+
 	@RequestMapping("insert")
 	public String insert(MemberDTO memberDTO, HttpServletResponse response, Model model) throws IOException {
 		memberDTO.setAuthKey('0');
@@ -219,18 +221,48 @@ public class MemberController {
 		MemberDTO dto = memberDAO.select(id);
 		model.addAttribute("id", dto.getId());
 	}
+
 	@RequestMapping("updatePw2")
 	public String updatePw2(MemberDTO memberDTO, Model model) {
 		memberDAO.updatePw(memberDTO);
 		model.addAttribute("loginPage", tool.login());
 		return "loginPage";
 	}
-	
-	//마이페이지로 이동하기
+
+	// 마이페이지로 이동하기
 	@RequestMapping("my")
-	public void my(MemberDTO memberDTO,HttpSession session,Model model) {
-		String id = (String)session.getAttribute("id");
+	public void my(MemberDTO memberDTO, HttpSession session, Model model) {
+		String id = (String) session.getAttribute("id");
 		MemberDTO dto = memberDAO.select(id);
-		model.addAttribute("dto",dto);
+		model.addAttribute("dto", dto);
+		String addr = dto.getTotaddr();
+		String[] addrs = addr.split("\\.");
+		model.addAttribute("addr",addrs[0]);
+		model.addAttribute("addr1",addrs[1]);
+		model.addAttribute("addr2",addrs[2]);
+		model.addAttribute("addr3",addrs[3]);
 	}
+
+	// 회원수정하기
+	@RequestMapping("updateAll")
+	public void updateAll(MemberDTO memberDTO,String travel_theme2,String addr1,HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		memberDTO = memberDAO.select(id);
+		String roadaddr = memberDTO.getRoadaddr();
+		String totaddr = memberDTO.getTotaddr();
+		if(addr1.equals("")) {
+			memberDTO.setRoadaddr(roadaddr);
+			memberDTO.setTotaddr(totaddr);
+		}else {
+			memberDTO.setTotaddr();
+		}
+		
+		
+		if(travel_theme2 != null) {
+			memberDTO.setTravel_theme(travel_theme2);
+		}
+		memberDAO.updateAll(memberDTO);
+	}
+
+	
 }
