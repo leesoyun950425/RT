@@ -7,8 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="loginPage">로그인</a>
-<a href="sign">회원가입</a>
-<a href="form">파일</a>
+<h1>Upload completed</h1>
+<div class="result-images">
+         <img src="${pageContext.request.contextPath }${url}" style="width:200px">
+</div>
+<p> <a href='/fileupload/form'> 다시 업로드 하기 </a> /p>
 </body>
 </html>

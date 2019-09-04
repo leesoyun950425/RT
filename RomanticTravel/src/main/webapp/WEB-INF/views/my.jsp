@@ -122,12 +122,18 @@ function sample4_execDaumPostcode() {
       </tr>
       <tr>
          <td width="180" class="td_title">사진</td>
-         <td><img src="resources/img/${dto.thumb}"><input type="file" value="변경하기"></td>
+         <td><img id="img" src="resources/img/${dto.thumb}"><input type="file" value="변경하기" id="fileChange"></td>
+      </tr>
+       <tr>
+      <td>비번</td>
+      <td><td><input type="text" name="pw" value="${dto.pw}" id="pw"></td>
       </tr>
       <tr>
          <td width="180" class="td_title">탈퇴</td>
          <td><input type="button" value="탈퇴하기" class="purebtn button-small" id="delete" ></td>
+         
       </tr>
+     
    </table>
    <input type="button" class="purebtn" id="update" value="수정하기" >
    </form>

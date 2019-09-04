@@ -69,11 +69,6 @@ public class MemberController {
 		}
 	}
 
-	@RequestMapping("delete")
-	public void delete(MemberDTO memberDTO) {
-		memberDAO.delete(memberDTO);
-	}
-
 	// 인증키 인증된 처리
 	@RequestMapping("authkey")
 	public String authkey(String id, Model model, HttpServletResponse response) throws IOException {
@@ -245,24 +240,46 @@ public class MemberController {
 
 	// 회원수정하기
 	@RequestMapping("updateAll")
-	public void updateAll(MemberDTO memberDTO,String travel_theme2,String addr1,HttpSession session) {
+	public String updateAll(MemberDTO memberDTO,String travel_theme2,String addr1,HttpSession session,HttpServletResponse response) throws IOException {
 		String id = (String) session.getAttribute("id");
-		memberDTO = memberDAO.select(id);
-		String roadaddr = memberDTO.getRoadaddr();
-		String totaddr = memberDTO.getTotaddr();
-		if(addr1.equals("")) {
-			memberDTO.setRoadaddr(roadaddr);
-			memberDTO.setTotaddr(totaddr);
-		}else {
-			memberDTO.setTotaddr();
-		}
-		
+		MemberDTO dto = memberDAO.select(id);
+		String roadaddr = dto.getRoadaddr();
+		String totaddr = dto.getTotaddr();
 		
 		if(travel_theme2 != null) {
 			memberDTO.setTravel_theme(travel_theme2);
+			memberDTO.setTotaddr();
+			memberDAO.updateAll(memberDTO);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('수정이 완료되었습니다!!!')");
+			out.println("</script>");
+			out.flush();
+			return "updateAll";
+		}else {
+			memberDTO.setTotaddr();
+			memberDAO.updateAll(memberDTO);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script type='text/javascript'>");
+			out.println("alert('수정이 완료되었습니다!!!')");
+			out.println("</script>");
+			out.flush();
+			return "updateAll";
 		}
-		memberDAO.updateAll(memberDTO);
 	}
-
 	
+	//회원탈퇴하기
+	@RequestMapping("delete")
+	public String delete(MemberDTO memberDTO,HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script type='text/javascript'>");
+		out.println("alert('탈퇴가 완료되었습니다!')");
+		out.println("</script>");
+		out.flush();
+		return "loginPage";
+	}
 }
+
