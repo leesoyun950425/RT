@@ -71,7 +71,8 @@ function sample4_execDaumPostcode() {
    <table class="myTable" >
       <tr>
          <td width="180" class="td_title">아이디</td>
-         <td><input type="text" name="id" id="id" value="${dto.id}" readonly="readonly"></td>
+         <td><input type="text" name="id" id="id" value="${dto.id}" readonly="readonly">
+         <input type="hidden" name="pw" value="${dto.pw}" id="pw"></td>
       </tr>
       <tr>
          <td width="180" class="td_title">이름</td>
@@ -125,8 +126,7 @@ function sample4_execDaumPostcode() {
          <td><img id="img" src="resources/img/${dto.thumb}"><input type="file" value="변경하기" id="fileChange"></td>
       </tr>
        <tr>
-      <td>비번</td>
-      <td><td><input type="text" name="pw" value="${dto.pw}" id="pw"></td>
+      
       </tr>
       <tr>
          <td width="180" class="td_title">탈퇴</td>

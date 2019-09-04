@@ -272,13 +272,25 @@ public class MemberController {
 	
 	//회원탈퇴하기
 	@RequestMapping("delete")
-	public String delete(MemberDTO memberDTO,HttpServletResponse response) throws IOException {
+	public String delete(String inputId,Model model,HttpSession session,HttpServletResponse response) throws IOException {
+		inputId = (String)session.getAttribute("id");
+		memberDAO.delete(inputId);
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script type='text/javascript'>");
 		out.println("alert('탈퇴가 완료되었습니다!')");
 		out.println("</script>");
 		out.flush();
+		session.invalidate();
+		model.addAttribute("loginPage", tool.login());
+		return "loginPage";
+	}
+	
+	//로그아웃
+	@RequestMapping("logout")
+	public String logout(Model model,HttpSession session) {
+		session.invalidate();
+		model.addAttribute("loginPage", tool.login());
 		return "loginPage";
 	}
 }

@@ -8,5 +8,6 @@
 </head>
 <body>
 	<a href="my">마이페이지로 이동</a>
+	<input type="button" value="로그아웃" onclick="location='logout'">
 </body>
 </html>

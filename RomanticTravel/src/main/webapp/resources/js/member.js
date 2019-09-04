@@ -1,5 +1,6 @@
 //아이디 중복체크
 $(function() {
+	
 	$("#checkId").click(function() {
 		var id = $("#id").val();
 		$.ajax({

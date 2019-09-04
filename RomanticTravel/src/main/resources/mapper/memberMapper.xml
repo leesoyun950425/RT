@@ -98,7 +98,7 @@
       id = #{id}
    </update>
 
-	<delete id="delete" parameterType="memberDTO">
+	<delete id="delete" parameterType="String">
 		DELETE FROM member WHERE
 		id = #{id}
 	</delete>

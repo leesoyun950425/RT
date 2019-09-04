@@ -46,8 +46,8 @@ public class MemberDAO {
 	public void updateAll(MemberDTO memberDTO) {
 	      mymy.update("memberDAO.updateAll",memberDTO);
 	   }
-	public void delete(MemberDTO memberDTO) {
-		mymy.delete("memberDAO.delete",memberDTO);
+	public void delete(String inputId) {
+		mymy.delete("memberDAO.delete",inputId);
 	}
 	
 	public List<MemberDTO> selectAll(){

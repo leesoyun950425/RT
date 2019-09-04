@@ -8,6 +8,7 @@ public class MemberTools {
 				"아이디 : <input type=\"text\" name=\"id\" class=\"loginInput\"><br>" + 
 				"비밀번호 : <input type=\"text\" name=\"pw\" class=\"loginInput\"><br>" + 
 				"<input type=\"submit\" value=\"로그인\" id=\"loginbtn\">" + 
+				"<input type=\"button\" value=\"회원가입\" id=\"signbtn\" onclick=\"location='sign'\">"+
 				"</div>"+
 				"</form>" + 
 				"<div class=\"searchIdPw\">"+
