@@ -4,10 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="com.soyun.travle.MemberDTO" alias="memberDTO"></typeAlias>
+		<typeAlias type="com.soyun.travel.MemberDTO" alias="memberDTO"></typeAlias>
+		<typeAlias type="com.soyun.travel.ChatRoomDTO" alias="chatroomDTO"></typeAlias>
+		<typeAlias type="com.soyun.travel.CourseDTO" alias="courseDTO"></typeAlias>
+		<typeAlias type="com.soyun.travel.TypeADTO" alias="typeADTO"></typeAlias>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mapper/memberMapper.xml"/>
+		<mapper resource="mapper/chatRoomMapper.xml"/>
+		<mapper resource="mapper/courseMapper.xml"/>
+		<mapper resource="mapper/typeAMapper.xml"/>
 	</mappers>
 </configuration>
 

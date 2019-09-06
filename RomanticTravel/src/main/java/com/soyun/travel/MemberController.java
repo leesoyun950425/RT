@@ -1,4 +1,4 @@
-package com.soyun.travle;
+package com.soyun.travel;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +24,8 @@ public class MemberController {
 
 	@Autowired
 	MemberDAO memberDAO;
-	MemberTools tool = new MemberTools();
+	@Autowired
+	MemberTools tool;
 
 	@RequestMapping("loginPage")
 	public void loginPage(Model model) {

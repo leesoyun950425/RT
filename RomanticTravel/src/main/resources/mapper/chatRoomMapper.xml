@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="chatroomDAO">
+
+	<select id="select" parameterType="String" resultMap="rsMap">
+		SELECT
+		*
+		FROM chatroom
+		WHERE leader = #{leader}
+	</select>
+
+	<resultMap type="chatroomDTO" id="rsMap">
+		<result property="members" column="members"/>
+		<result property="chatRoomName" column="chatRoomName" />
+		<result property="createTime" column="createTime" />
+		<result property="chatRoomNum" column="chatRoomNum" />
+		<result property="limitMember" column="limitMember" />
+		<result property="leader" column="leader" />
+		<result property="thumbnail" column="thumbnail" />
+	</resultMap>
+
+	<select id="selectAll" resultMap="rsMap">
+		SELECT * FROM chatroom
+	</select>
+
+</mapper>

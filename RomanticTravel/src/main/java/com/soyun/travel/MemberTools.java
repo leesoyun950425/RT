@@ -1,5 +1,8 @@
-package com.soyun.travle;
+package com.soyun.travel;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class MemberTools {
 
 	public String login() {

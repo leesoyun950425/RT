@@ -1,4 +1,4 @@
-package com.soyun.travle;
+package com.soyun.travel;
 
 public class MemberDTO {
 
