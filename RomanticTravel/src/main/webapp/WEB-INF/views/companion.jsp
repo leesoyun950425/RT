@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/companinonStyle.css">
+<link rel="stylesheet" href="resources/css/companionStyle.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/companion.js"></script>
 </head>
 <body>
-	<div class="compaList">
+	<div class="compaList" id="compaList">
 		<h2>동행찾기 리스트</h2>
 			<p>동행찾기 신청자 리스트 입니다.</p>
 		<table class="comTable">
@@ -26,7 +28,7 @@
 				<td>${dto.inwon}/${dto.limit}</td>
 				<td>${dto.place_name}</td>
 				<td>${dto.start}~ ${dto.term}</td>
-				<td><input type="button" value="자세히 보기"></td>
+				<td><button class = "detail" value = "${dto.leader}">자세히보기</button></td>
 			<tr>
 		</table>
 	</div>

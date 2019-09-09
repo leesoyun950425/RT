@@ -20,17 +20,23 @@ public class ChatRoomController {
 	@Autowired
 	TypeADAO typeADAO;
 
+	MemberDTO memberDTO;
+	ChatRoomDTO chatroomDTO;
+	CourseDTO courseDTO;
+	TypeADTO typeADTO;
+	
+	//동행자 신청 리스트 
 	@RequestMapping("companion")
 	public void companion(String leader, String inputId, Model model) {
 		CompanionDTO dto = new CompanionDTO();
 		
 		inputId = "asdf1";
-		MemberDTO memberDTO = new MemberDTO();
+		memberDTO = new MemberDTO();
 		memberDTO = memberDAO.select(inputId);
 		dto.setThumb(memberDTO.getThumb());
 
 		leader = memberDTO.getName() + "_" + inputId;
-		ChatRoomDTO chatroomDTO = chatroomDAO.select(leader);
+		chatroomDTO = chatroomDAO.select(leader);
 		dto.setLeader(chatroomDTO.getLeader());
 		String inwon = chatroomDTO.getMembers();
 		if (inwon.contains(",")) {
@@ -41,11 +47,11 @@ public class ChatRoomController {
 			dto.setLimit(chatroomDTO.getLimitMember());
 		}
 		
-		CourseDTO courseDTO = new CourseDTO();
+		courseDTO = new CourseDTO();
 		courseDTO = courseDAO.select(inputId);
 		dto.setPlace_name(courseDTO.getPlace_name());
 		
-		TypeADTO typeADTO = new TypeADTO();
+		typeADTO = new TypeADTO();
 		typeADTO = typeADAO.select(inputId);
 		int days = Integer.parseInt(typeADTO.getDay_start()); 
 		int term = days+typeADTO.getTravel_day();
@@ -53,8 +59,20 @@ public class ChatRoomController {
 		dto.setTerm(term);
 		
 		model.addAttribute("dto",dto);	
-		
 	}
 
-	
+	@RequestMapping("detail")
+	public void detail(String leader,Model model) {
+		String inputId = "asdf1";
+		courseDTO = courseDAO.select(inputId);
+		typeADTO = typeADAO.select(inputId);
+		
+		int days = Integer.parseInt(typeADTO.getDay_start());
+		int term = days+typeADTO.getTravel_day();
+		
+		model.addAttribute("typeA",typeADTO);
+		model.addAttribute("course",courseDTO);
+		model.addAttribute("leader", leader);
+		model.addAttribute("term",term);
+	}
 }
