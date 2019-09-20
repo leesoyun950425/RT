@@ -6,13 +6,26 @@ public class CompanionDTO {
 	private String leader;
 	private int inwon;
 	private String place_name;
-	private int start;
-	private int term;
+	private String start;
+	private String end;
+	private int num;
 	
-	public int getStart() {
+	public String getEnd() {
+		return end;
+	}
+	public void setEnd(String end) {
+		this.end = end;
+	}
+	public String getStart() {
 		return start;
 	}
-	public void setStart(int start) {
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public void setStart(String start) {
 		this.start = start;
 	}
 	public int getLimit() {
@@ -46,10 +59,5 @@ public class CompanionDTO {
 	public void setPlace_name(String place_name) {
 		this.place_name = place_name;
 	}
-	public int getTerm() {
-		return term;
-	}
-	public void setTerm(int term) {
-		this.term = term;
-	}
+	
 }

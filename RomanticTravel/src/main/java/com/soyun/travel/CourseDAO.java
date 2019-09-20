@@ -13,4 +13,11 @@ public class CourseDAO {
 	public CourseDTO select(String inputId) {
 		return mymy.selectOne("courseDAO.select",inputId);
 	}
+	
+	public String placeSelectStart(int no) {
+		return mymy.selectOne("courseDAO.placeSelectStart",no);
+	}
+	public String placeSelectEnd(int no) {
+		return mymy.selectOne("courseDAO.placeSelectEnd",no);
+	}
 }

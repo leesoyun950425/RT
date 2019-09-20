@@ -18,7 +18,14 @@ public class MemberDTO {
 	private String travel_theme;
 	private String thumb;
 	private int cnt;
+	private int no;
 	
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getThumb() {
 		return thumb;
 	}
@@ -121,5 +128,9 @@ public class MemberDTO {
 	}
 	public void setBirth(String birth) {
 		this.birth = birth;
+	}
+	@Override
+	public String toString() {
+		return id ;
 	}
 }

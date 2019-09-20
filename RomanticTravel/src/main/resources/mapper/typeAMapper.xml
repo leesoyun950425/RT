@@ -23,8 +23,8 @@
 		<result property="travel_intro" column="travel_intro" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="rsMap">
-		SELECT * FROM tablename1
+	<select id="typeASelectAll" parameterType="String" resultMap="rsMap">
+		SELECT * FROM typeA where choice_public = #{choice_public}
 	</select>
 
 </mapper>

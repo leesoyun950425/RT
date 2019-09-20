@@ -22,6 +22,10 @@ public class MemberDAO {
 		return mymy.selectOne("memberDAO.select",inputId);
 	}
 	
+	public List<MemberDTO> selectCompanion2(MemberDTO inputId) {
+		return mymy.selectList("memberDAO.select",inputId);
+	}
+	
 	public int selectCnt(MemberDTO memberDTO) {
 		return mymy.selectOne("memberDAO.selectCnt",memberDTO);
 	}
@@ -50,7 +54,7 @@ public class MemberDAO {
 		mymy.delete("memberDAO.delete",inputId);
 	}
 	
-	public List<MemberDTO> selectAll(){
+	public List<String> selectAll(){
 		return mymy.selectList("memberDAO.selectAll");
 	}
 	

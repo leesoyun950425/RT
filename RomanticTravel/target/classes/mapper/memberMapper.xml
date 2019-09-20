@@ -11,6 +11,7 @@
 		WHERE id = #{id}
 	</select>
 	
+	
 	<select id="selectCnt" parameterType="memberDTO" resultType="int">
 		SELECT
 		count(*) as cnt
@@ -59,8 +60,8 @@
 		<result property="thumb" column="thumb" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="rsMap">
-		SELECT * FROM member
+	<select id="selectAll" resultType="String">
+		SELECT id FROM member
 	</select>
 
 	<insert id="insert" parameterType="memberDTO">
@@ -93,7 +94,8 @@
       birth= #{birth},
       roadaddr = #{roadaddr},
       totaddr= #{totaddr},
-      travel_theme= #{travel_theme}
+      travel_theme= #{travel_theme},
+      thumb = #{thumb}
       WHERE
       id = #{id}
    </update>

@@ -12,6 +12,7 @@
 <!-- com.itbank.mvc10밑에 싱글톤 만드는 어노테이션 다 찾기(코드오픈 되있는거) -->
 <context:component-scan base-package="com.soyun.travel"></context:component-scan>
 
+
 <bean id="myBatis" class="org.mybatis.spring.SqlSessionTemplate">
 	<constructor-arg ref="myConfig"></constructor-arg>
 </bean>

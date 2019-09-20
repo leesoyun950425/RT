@@ -10,6 +10,12 @@
 		FROM chatroom
 		WHERE leader = #{leader}
 	</select>
+	<select id="selectNum" parameterType="Integer" resultMap="rsMap">
+		SELECT
+		*
+		FROM chatroom
+		WHERE chatroomNum = #{chatroomNum}
+	</select>
 
 	<resultMap type="chatroomDTO" id="rsMap">
 		<result property="members" column="members"/>
@@ -21,8 +27,8 @@
 		<result property="thumbnail" column="thumbnail" />
 	</resultMap>
 
-	<select id="selectAll" resultMap="rsMap">
-		SELECT * FROM chatroom
+	<select id="chatSelectAll" resultType="chatroomDTO">
+		SELECT leader,chatroomNum FROM chatroom
 	</select>
 
 </mapper>

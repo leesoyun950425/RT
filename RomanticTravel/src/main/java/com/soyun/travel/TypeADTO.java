@@ -10,6 +10,28 @@ public class TypeADTO {
 	private String travel_theme;
 	private String choice_public;
 	private String travel_intro;
+	private int current_mem;
+	private int max_mem;
+	private String day_end;
+	
+	public int getCurrent_mem() {
+		return current_mem;
+	}
+	public void setCurrent_mem(int current_mem) {
+		this.current_mem = current_mem;
+	}
+	public int getMax_mem() {
+		return max_mem;
+	}
+	public void setMax_mem(int max_mem) {
+		this.max_mem = max_mem;
+	}
+	public String getDay_end() {
+		return day_end;
+	}
+	public void setDay_end(String day_end) {
+		this.day_end = day_end;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -64,4 +86,12 @@ public class TypeADTO {
 	public void setTravel_intro(String travel_intro) {
 		this.travel_intro = travel_intro;
 	}
+	@Override
+	public String toString() {
+		return "TypeADTO [no=" + no + ", id=" + id + ", title=" + title + ", travel_day=" + travel_day + ", day_start="
+				+ day_start + ", travel_type=" + travel_type + ", travel_theme=" + travel_theme + ", choice_public="
+				+ choice_public + ", travel_intro=" + travel_intro + ", current_mem=" + current_mem + ", max_mem="
+				+ max_mem + ", day_end=" + day_end + "]";
+	}
+	
 }

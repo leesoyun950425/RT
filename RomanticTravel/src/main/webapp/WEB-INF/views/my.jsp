@@ -61,10 +61,13 @@ function sample4_execDaumPostcode() {
          }
    }).open();
    }
+var fileValue = $("#fileChange").val().split("\\");
+var fileName = fileValue[fileValue.length-1]; // 파일명
+
 </script>
 </head>
 <body>
-<div id="my">
+<div id="my" class="filewrap">
    <h2>회원정보수정</h2>
    <p>회원정보를 수정하실 수 있습니다.</p>
    <form name="form1">
@@ -123,18 +126,16 @@ function sample4_execDaumPostcode() {
       </tr>
       <tr>
          <td width="180" class="td_title">사진</td>
-         <td><img id="img" src="resources/img/${dto.thumb}"><input type="file" value="변경하기" id="fileChange"></td>
-      </tr>
-       <tr>
-      
+         <td><img id="img" src="${dto.thumb}" ><input type="file" value="변경하기" id="fileChange" multiple>
+         <input type="text" name="thumb" id="thumb" value="${dto.thumb}"></td>
       </tr>
       <tr>
          <td width="180" class="td_title">탈퇴</td>
          <td><input type="button" value="탈퇴하기" class="purebtn button-small" id="delete" ></td>
-         
       </tr>
-     
+      
    </table>
+   <div id="file_view_list"></div>
    <input type="button" class="purebtn" id="update" value="수정하기" >
    </form>
 </div>
